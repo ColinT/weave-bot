@@ -6,9 +6,14 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.content === 'ping') {
-    message.reply('pong');
-  }
+	var msg = message.content.split(" ");
+	if (msg[0] === '!ping') {
+		message.reply('pong');
+		
+	} else if (msg[0] === "!invite") {
+		var invitee = msg[1];
+		console.log(message.author.username + ' has invited ' + invitee);
+	}
 });
 
 client.login('MjkxMDU2NDA3OTA4OTc0NTky.C6p_4Q.IkSPds322b3oQmuxUjSuFY6pGog');
