@@ -8,7 +8,10 @@ client.on('ready', () => {
 client.on('message', message => {
 	var msg = message.content.split(" ");
 	if (msg[0] === '!ping') {
+		var arr = message.mentions.users.array();
 		message.reply('pong');
+		console.log(arr);
+		console.log(arr[0].id);
 		
 	} else if (msg[0] === "!invite") {
 		var invitee = msg[1];
