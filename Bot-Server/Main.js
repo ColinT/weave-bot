@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const io = require('socket.io-client');
-const port = 8080;
+const port = 8081;
 const prefix = "!";
 var socket = io.connect('http://localhost:' + port);
 
@@ -33,6 +33,10 @@ client.on('message', message => {
 			var arr = message.mentions.users.array();
 			// Retrieve first mentioned user's username
 			// for debugging for now
+			if(arr[0] === undefined) {
+        console.log('Invalid invite: no mentions detected');
+        return;
+      }
 			let invitee = arr[0].username;
 			console.log(message.author.username + ' has invited ' + invitee);
 			socket.emit('invite', message.author.username + ' has invited ' + invitee);
@@ -44,5 +48,5 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
-
+// Login to dicord
 client.login('MjkxMDU2NDA3OTA4OTc0NTky.C6p_4Q.IkSPds322b3oQmuxUjSuFY6pGog');
