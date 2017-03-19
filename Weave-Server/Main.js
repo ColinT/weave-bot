@@ -1,6 +1,6 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
-const port = 8080;
+const port = 8081;
 
 
 io.on('connection', client => {
@@ -14,10 +14,11 @@ io.on('connection', client => {
 
 	// Invite listener, logs out 'x has invited y'
 	// Depending on what is needed, maybe send
-	// an array of usernames and IDs 
+	// an array of usernames and IDs
 	client.on('invite', data => {
 		console.log(data);
 	})
 })
 
 server.listen(port);
+console.log('ready');
